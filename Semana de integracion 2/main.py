@@ -8,6 +8,7 @@ from utils.mainMenu import main_loop
 
 '''
 mostrar_venn_con_elementos(P, R)
+Esto es una prueba
 
 diferencia_entre_dos(P, R)
 union_varios([P, R])
