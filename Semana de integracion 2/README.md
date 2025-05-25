@@ -97,8 +97,15 @@ python -m venv .venv
 
 O ejectuar script: setup.ps1
 
+
 #### En Linux / macOS:
 
 python3 -m venv .venv
 
 O ejecutar bash: bash setup.sh
+
+---
+
+#### Check:
+
+Comprobar si las dependencias de requirements.txt se encuentran instaladas, caso contrario python install <nombre_dependencia>
