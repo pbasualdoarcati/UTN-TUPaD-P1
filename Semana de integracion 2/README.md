@@ -73,6 +73,8 @@ Además, aplicamos conceptos de **Arquitectura de Sistemas Operativos**, automat
     ├── graficosVenn.py          # Funciones para generar diagramas de Venn básicos
     ├── graficoVennDiferencia.py # Funciones para graficar diferencias entre conjuntos
     ├── normalizador.py          # Funciones para sanitizar y limpiar entradas del usuario
+    ├── menu.py                  # Funciones de menu y submenu
+    ├── mainMenu.py              # Función principal de menu para ejecutar al inicio del programa en loop
     └── operaciones.py           # Funciones de operaciones con conjuntos (unión, intersección, etc.)
 </pre>
 
