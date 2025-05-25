@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo-utn.png" alt="Logo UTN" width="100%" style="background-color: white; padding: 10px;"/>
+  <img src="assets/logo-utn.png" alt="Logo UTN" width="100%"/>
 </p>
 <p align="center">
   <strong>Universidad Tecnológica Nacional</strong>
