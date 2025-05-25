@@ -61,7 +61,7 @@ Además, aplicamos conceptos de **Arquitectura de Sistemas Operativos**, automat
 ---
 
 ### Estructura del proyecto
-
+<pre>
 📦 Semana de integracion 2
 ├── main.py                      # Script principal que ejecuta el programa
 ├── requirements.txt             # Lista de dependencias a instalar con pip
@@ -74,6 +74,7 @@ Además, aplicamos conceptos de **Arquitectura de Sistemas Operativos**, automat
     ├── graficoVennDiferencia.py # Funciones para graficar diferencias entre conjuntos
     ├── normalizador.py          # Funciones para sanitizar y limpiar entradas del usuario
     └── operaciones.py           # Funciones de operaciones con conjuntos (unión, intersección, etc.)
+</pre>
 
 ## Setup del entorno y dependencias
 
