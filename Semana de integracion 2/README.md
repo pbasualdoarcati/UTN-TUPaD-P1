@@ -76,6 +76,13 @@ Además, aplicamos conceptos de **Arquitectura de Sistemas Operativos**, automat
     └── operaciones.py           # Funciones de operaciones con conjuntos (unión, intersección, etc.)
 </pre>
 
+---
+
+### Herramientas externas - Documentación
+`matplotlib` y `matplotlib-venn`: https://pypi.org/project/matplotlib-venn/ | https://github.com/konstantint/matplotlib-venn
+
+---
+
 ## Setup del entorno y dependencias
 
 ### 1. Crear y activar entorno virtual
