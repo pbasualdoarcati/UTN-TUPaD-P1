@@ -15,9 +15,9 @@ def diferencia_entre_dos(conjunto1, conjunto2, etiqueta1='Conjunto A', etiqueta2
     if venn.get_label_by_id('10'):
         venn.get_label_by_id('10').set_text('\n'.join(map(str, diferencia_a_b)))
     if venn.get_label_by_id('01'):
-        venn.get_label_by_id('01').set_text('\n'.join(map(str, diferencia_b_a)))
+        venn.get_label_by_id('01').set_text(None)
     if venn.get_label_by_id('11'):
-        venn.get_label_by_id('11').set_text('\n'.join(map(str, interseccion)))
+        venn.get_label_by_id('11').set_text(None)
 
     # Mostrar A - B como texto debajo del gráfico
     plt.figtext(
@@ -46,14 +46,15 @@ def union_varios(conjuntos, etiquetas=None, titulo='Unión de conjuntos'):
 
         plt.title(titulo)
 
-        # Mostrar elementos reales
+        # Mostrar union completa
+        union = conjunto1 | conjunto2
         if venn.get_label_by_id('10'):
-            venn.get_label_by_id('10').set_text('\n'.join(map(str, conjunto1 - conjunto2)))
-        if venn.get_label_by_id('01'):
-            venn.get_label_by_id('01').set_text('\n'.join(map(str, conjunto2 - conjunto1)))
+            venn.get_label_by_id('10').set_text(None)
         if venn.get_label_by_id('11'):
-            venn.get_label_by_id('11').set_text('\n'.join(map(str, conjunto1 & conjunto2)))
-
+            venn.get_label_by_id('11').set_text('\n'.join(map(str, sorted(union))))
+        if venn.get_label_by_id('01'):
+            venn.get_label_by_id('01').set_text(None)
+            
         # Mostrar unión completa abajo
         union = set().union(*conjuntos)
         plt.figtext(
@@ -90,11 +91,11 @@ def interseccion_varios(conjuntos, etiquetas=None, titulo='Intersección de conj
 
         # Mostrar elementos reales en cada región
         if venn.get_label_by_id('10'):
-            venn.get_label_by_id('10').set_text('\n'.join(map(str, c1 - c2)))
+            venn.get_label_by_id('10').set_text(None)
         if venn.get_label_by_id('01'):
-            venn.get_label_by_id('01').set_text('\n'.join(map(str, c2 - c1)))
+            venn.get_label_by_id('01').set_text(None)
         if venn.get_label_by_id('11'):
-            venn.get_label_by_id('11').set_text('\n'.join(map(str, c1 & c2)))
+            venn.get_label_by_id('11').set_text('\n'.join(map(str, sorted(c1 & c2))))
 
         # Mostrar intersección final
         plt.figtext(0.5, 0.01, f'{etiquetas[0]} ∩ {etiquetas[1]} = {sorted(inter)}', ha='center', fontsize=10, color='blue')
@@ -144,7 +145,7 @@ def diferencia_simetrica_y_diferencias(conjunto1, conjunto2, etiqueta1='Conjunto
 
     # Intersección A ∩ B
     if venn.get_label_by_id('11'):
-        venn.get_label_by_id('11').set_text('\n'.join(map(str, conjunto1 & conjunto2)))
+        venn.get_label_by_id('11').set_text(None)
 
     # Diferencia simétrica A ∆ B
     diferencia_simetrica = conjunto1.symmetric_difference(conjunto2)

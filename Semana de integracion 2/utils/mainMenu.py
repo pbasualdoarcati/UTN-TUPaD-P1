@@ -38,6 +38,8 @@ def ejecutar_submenu_conjuntos():
         if sub_option == "1":
             mostrar_venn_con_elementos(P, R)
         elif sub_option == "2":
+            '''pedir al usuario que ingrese dos conjuntos y mostrar la diferencia entre ellos'''
+            '''print la diferencia. y dejar una opcion que diga, si quiere ver el grafico.'''
             diferencia_entre_dos(P, R)
         elif sub_option == "3":
             union_varios([P, R])
