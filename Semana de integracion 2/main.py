@@ -46,20 +46,33 @@ print(f'Conjunto normalizado: {test}')
 
 '''
 
-''' conjunto = limpiar_y_convertir(test)
+'''
+test = input('Ingrese un conjunto de números separados por comas: ')
+conjunto = limpiar_y_convertir(test)
+conjuntos = []
+P = {0, 1, 2, 3, 4, 5, 9}
+R = {3,4,2,9,2,2,8,2}
+E = {3, 4, 5, 6, 7, 8}
+
+
+
 print(f'Conjunto ingresado: {conjunto}')
-conjuntos.append(conjunto)
+
 conjuntos.append(P)
 conjuntos.append(R)
 conjuntos.append(E)
-print(f'Conjuntos: {conjuntos}')
-print(f'Frecuencia de los elementos en el conjunto: {contar_frecuencia(conjunto)}')
-print(f'Suma de los elementos del conjunto: {sumar_digitos(conjunto)}')
-print(f'Dígitos compartidos entre los conjuntos: {digitos_compartidos(conjuntos)}')
-print(f'Conjuntos con alta diversidad (más de 6 elementos): {diversidad_alta(conjuntos)}')
 
+print(f'Conjuntos: {conjuntos}')
 '''
+
+'''print(f'Frecuencia de los elementos en el conjunto: {contar_frecuencia(R)}')
+print(f'Suma de los elementos del conjunto: {sumar_digitos(R)}')
+print(f'Dígitos compartidos entre los conjuntos: {digitos_compartidos(conjuntos)}')
+print(f'Conjuntos con alta diversidad (más de 6 elementos): {diversidad_alta(conjuntos)}')MAL ELIMINA LOS VALORES REPETIDOS, PORQUE ES UN SET, UTILIZAR LISTA []'''
+
+
 
 if __name__ == "__main__":
     main_loop()
 #     main_menu()
+
