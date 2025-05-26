@@ -1,71 +1,58 @@
 from datetime import datetime
 
+# Constante para mostrar cuando el usuario ingresa un dato incorrecto
+OPCION_NO_VALIDA = "Opción no válida. Intente nuevamente."
+
 def es_bisiesto(anio: int) -> bool:
-    
-    # Función que determina si un año es bisiesto.
-    # Un año es bisiesto si es divisible por 4 y no por 100,
-    # salvo que sea divisible por 400.
-    
+    # Determina si un año es bisiesto.
     return (anio % 4 == 0 and anio % 100 != 0) or (anio % 400 == 0)
 
 def obtener_edad(anio_nacimiento: int) -> int:
-    
-    # Calcula la edad actual restando el año de nacimiento
-    # al año actual obtenido del sistema.
-    
-    anio_actual = datetime.now().year
-    return anio_actual - anio_nacimiento
+    # Calcula la edad actual según el año de nacimiento.
+    return datetime.now().year - anio_nacimiento
 
 def ingresar_anio(integrante_num: int) -> int:
     
-    # Solicita al usuario ingresar el año de nacimiento de un integrante.
-    # Valida que sea un número entero dentro del rango válido
-    # (1900 hasta el año actual).
+    # Solicita el año de nacimiento de un integrante.
+    # Valida que sea un número entero entre 1900 y el año actual.
     
+    anio_actual = datetime.now().year
+
     while True:
-        entrada = input(f"Ingresá el año de nacimiento del integrante {integrante_num}: ")
-        
-        # Verifico que la entrada sea solo números
+        entrada = input(f"Ingresá el año de nacimiento del integrante {integrante_num}: ").strip()
+
         if not entrada.isdigit():
-            print("Por favor, ingresá solo números.")
+            print(OPCION_NO_VALIDA)
             continue
-        
+
         anio = int(entrada)
-        
-        # Verifico que el año esté en un rango lógico
-        if 1900 <= anio <= datetime.now().year:
+
+        if 1900 <= anio <= anio_actual:
             return anio
         else:
-            print(f"El año debe estar entre 1900 y {datetime.now().year}.")
+            print(OPCION_NO_VALIDA)
 
-def main():
-    cantidad_integrantes = 5  # Cantidad fija de integrantes para el grupo
-    anios_nacimiento = []     # Lista para guardar los años ingresados
-    
-    print("\n -- Ingresar año de nacimiento -- \n")
-    
-    # Se piden los años de nacimiento uno por uno
-    for i in range(1, cantidad_integrantes + 1):
+def anio_bisiesto(integrantes: int = 5) -> None:
+    # Controla el ingreso, validación, y análisis de años bisiestos de un grupo.
+    anios_nacimiento = []
+
+    print("\n-- Ingreso de años de nacimiento --\n")
+
+    for i in range(1, integrantes + 1):
         anio = ingresar_anio(i)
         anios_nacimiento.append(anio)
-    
-    # Compruebo si hay algún año bisiesto entre los ingresados
-    if any(es_bisiesto(anio) for anio in anios_nacimiento):
-        print("\n Tenemos un año especial.")
+
+    # Filtrar los años bisiestos ingresados
+    anios_bisiestos = [anio for anio in anios_nacimiento if es_bisiesto(anio)]
+
+    # Mostrar si hay o no años especiales
+    if anios_bisiestos:
+        print(f"\nTenemos un año especial. Años bisiestos: {', '.join(map(str, anios_bisiestos))}")
     else:
-        print("\n Ningún integrante nació en un año bisiesto.")
-    
-    # Calculo las edades de los integrantes y las muestro
-    edades = [obtener_edad(anio) for anio in anios_nacimiento]
-    print("\n -- Edades actuales de los integrantes --\n")
-    for i, edad in enumerate(edades, start=1):
+        print("\nNingún integrante nació en un año bisiesto.")
+
+    # Mostrar edades actuales
+    print("\n-- Edades actuales --\n")
+    for i, anio in enumerate(anios_nacimiento, start=1):
+        edad = obtener_edad(anio)
         print(f"Integrante {i}: {edad} años")
-
-
-if __name__ == "__main__":
-    main()
-
-
-
-
-
