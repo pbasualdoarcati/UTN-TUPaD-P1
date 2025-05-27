@@ -32,15 +32,9 @@ def ingresar_anio(integrante_num: int) -> int:
         else:
             print(OPCION_NO_VALIDA)
 
-def anio_bisiesto(integrantes: int = 5) -> None:
+def anio_bisiesto(anios_list) -> None:
     # Controla el ingreso, validación, y análisis de años bisiestos de un grupo.
-    anios_nacimiento = []
-
-    print("\n-- Ingreso de años de nacimiento --\n")
-
-    for i in range(1, integrantes + 1):
-        anio = ingresar_anio(i)
-        anios_nacimiento.append(anio)
+    anios_nacimiento = anios_list
 
     # Filtrar los años bisiestos ingresados
     anios_bisiestos = [anio for anio in anios_nacimiento if es_bisiesto(anio)]

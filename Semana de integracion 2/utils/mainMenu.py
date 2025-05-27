@@ -59,12 +59,12 @@ def ejecutar_submenu_producto_cartesiano():
         sub_option = sub_menu_producto_cartesiano()
         if sub_option == "1":
             integrantes  = int(input("Ingrese la cantidad de integrantes: "))
-            anio_bisiesto(integrantes)
-
             # Lógica para producto cartesiano
             pass
         elif sub_option == "2":
             # Lógica para producto cartesiano con repetición
+            mock_integrantes = [1991, 1990, 2002, 2003, 2008] # Simulación de años de nacimiento
+            anio_bisiesto(mock_integrantes)
             pass
         elif sub_option == "3":
             break
