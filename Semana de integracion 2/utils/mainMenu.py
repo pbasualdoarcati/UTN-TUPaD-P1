@@ -99,10 +99,7 @@ def ejecutar_submenu_producto_cartesiano():
             # Lógica para producto cartesiano
             pass
         elif sub_option == "2":
-            # Lógica para producto cartesiano con repetición
-            mock_integrantes = [1991, 1990, 2002, 2003, 2008] # Simulación de años de nacimiento
-            anio_bisiesto(mock_integrantes)
-            pass
+            anio_bisiesto(mock)
         elif sub_option == "3":
             break
         elif sub_option == "4":
