@@ -13,6 +13,8 @@ Este trabajo práctico se realizó con el fin de incorporar y aplicar conocimien
 
 Se utilizaron herramientas propias del core de Python como `set`, estructuras lógicas de control (`if`, `else`, `for`, `while`), y se integraron librerías externas como `matplotlib` y `matplotlib-venn` para representar gráficamente las operaciones de conjuntos mediante **diagramas de Venn**.
 
+Se utilizó la librería estándar de Python `datetime` para obtener la fecha y el año actual de manera precisa y dinámica, lo que permitió calcular las edades actuales de los integrantes a partir de sus años de nacimiento. Esto garantiza que el programa siempre utilice la fecha real del sistema al ejecutarse, evitando errores manuales o datos desactualizados.
+
 Además, aplicamos conceptos de **Arquitectura de Sistemas Operativos**, automatizando tareas mediante **scripts bash y PowerShell**, lo que permite una experiencia multiplataforma tanto para usuarios de Linux/macOS como de Windows.
 
 ---

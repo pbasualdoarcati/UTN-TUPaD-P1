@@ -5,9 +5,9 @@ from utils.normalizador import limpiar_y_convertir
 from utils.menu import menu, sub_menu_conjuntos, sub_menu_producto_cartesiano
 from utils.mainMenu import main_loop
 
-
 '''
 mostrar_venn_con_elementos(P, R)
+Esto es una prueba
 
 diferencia_entre_dos(P, R)
 union_varios([P, R])
@@ -74,4 +74,3 @@ print(f'Conjuntos con alta diversidad (más de 6 elementos): {diversidad_alta(co
 if __name__ == "__main__":
     main_loop()
 #     main_menu()
-
