@@ -3,14 +3,9 @@ from utils.graficoVennDiferencia import mostrar_venn_con_elementos
 from utils.graficosVenn import diferencia_entre_dos, union_varios, interseccion_varios, diferencia_simetrica_y_diferencias
 from utils.operaciones import contar_frecuencia, sumar_digitos, digitos_compartidos, diversidad_alta
 from utils.normalizador import limpiar_y_convertir
-<<<<<<< HEAD
-from utils.menu import menu, sub_menu_conjuntos, sub_menu_producto_cartesiano
+from utils.productoCartesiano import producto_cartesiano
 from utils.anioBisiesto import anio_bisiesto
 
-
-=======
-from utils.productoCartesiano import producto_cartesiano
->>>>>>> 3fe976cc445fe188a51a782daa4206ff0178e894
 OPCION_NO_VALIDA = "Opción no válida. Intente nuevamente."
 
 mock = [1990,2001, 2002, 2003]
