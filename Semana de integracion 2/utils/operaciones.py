@@ -1,30 +1,18 @@
-def contar_frecuencia(conjunto):
-    """Recibe un conjunto (o lista) y devuelve un diccionario con la frecuencia de cada dígito."""
+def contar_frecuencia(numeros):
+    """Recibe una lista de números y devuelve un diccionario con la frecuencia de cada número."""
     frecuencia = {}
-    for digito in conjunto:
-        frecuencia[digito] = frecuencia.get(digito, 0) + 1
+    for numero in numeros:
+        frecuencia[numero] = frecuencia.get(numero, 0) + 1
     return frecuencia
 
-def sumar_digitos(conjunto):
-    """Recibe un conjunto (o lista) y devuelve la suma de sus dígitos."""
-    suma = 0
-    for digito in conjunto:
-        suma += digito
-    return suma
+def sumar_digitos(numeros):
+    """Recibe una lista de números y devuelve la suma de sus dígitos."""
+    return sum(numeros)
 
-def digitos_compartidos(conjuntos):
-    """Recibe una lista de conjuntos y devuelve el conjunto de dígitos que están en todos ellos."""
-    if not conjuntos:
-        return set()
-    interseccion = conjuntos[0]
-    for conjunto in conjuntos[1:]:
-        interseccion = interseccion.intersection(conjunto)
-    return interseccion
+def digitos_compartidos(numeros):
+    """Recibe una lista de números y devuelve el conjunto de dígitos que están presentes en la lista."""
+    return set(numeros)
 
-def diversidad_alta(conjuntos, umbral=6):
-    """Recibe una lista de conjuntos y retorna una lista con los índices de los conjuntos que tengan más de 'umbral' elementos."""
-    indices = []
-    for i, conjunto in enumerate(conjuntos):
-        if len(conjunto) > umbral:
-            indices.append(i)
-    return indices
+def diversidad_alta(numeros, umbral=6):
+    """Recibe una lista de números y retorna True si la cantidad de elementos distintos supera el umbral."""
+    return len(set(numeros)) > umbral

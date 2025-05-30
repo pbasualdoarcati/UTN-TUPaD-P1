@@ -6,3 +6,5 @@ def ingresar_dnis(cant_integrantes):
         dni = int(input(f"Ingrese el DNI del integrante {i + 1}: "))
         dnis_list.append(dni)
     return dnis_list
+
+#salida [35459831, 35221490, 12346547]

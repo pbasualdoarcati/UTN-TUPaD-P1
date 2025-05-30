@@ -2,7 +2,7 @@ from utils.menu import menu, sub_menu_conjuntos, sub_menu_producto_cartesiano
 from utils.graficoVennDiferencia import mostrar_venn_con_elementos
 from utils.graficosVenn import diferencia_entre_dos, union_varios, interseccion_varios, diferencia_simetrica_y_diferencias
 from utils.operaciones import contar_frecuencia, sumar_digitos, digitos_compartidos, diversidad_alta
-from utils.normalizador import limpiar_y_convertir
+from utils.normalizador import convertir_a_lista_de_listas, generar_digitos_unicos, limpiar_y_convertir
 from utils.productoCartesiano import producto_cartesiano
 from utils.anioBisiesto import anio_bisiesto
 from utils.ingresarCantIntegrantes import ingresar_cantidad_integrantes
@@ -22,54 +22,12 @@ def main_loop():
         opcion = menu()
         
         if opcion == "1":
-            #una función que le solicite al usuario ingresar la cantidad de integrantes que desea trabajar,
             cantidad_integrantes = ingresar_cantidad_integrantes()
-            #y luego le solicite los DNI. en base a ese FOR vas a sacar 2 variables, una que sea de tipo set, y otra que sea de tipo list.
             dnis_list = ingresar_dnis(cantidad_integrantes) 
-            #en base a ese FOR vas a sacar 2 variables, una que sea de tipo set, y otra que sea de tipo list.
-            dnis_set = set(dnis_list)
-            print(f"Conjunto de DNI (set): {dnis_set}")
-            print(f"Lista de DNI (list): {dnis_list}")
-            #La set, va a pasar por el normlizador limpiar_y_convertir porque devuelve un conjunto de numeros enteros, 
-            dnis_set_normalizado = limpiar_y_convertir(dnis_set)
-            print(f"Conjunto de DNI normalizado (set): {dnis_set_normalizado}")
-            '''y la lista tiene que pasar por otro normalizador pero que devuelva una lista de numeros enteros
-            Mostrar un menu, que diga, que quiere hacer con esos conjuntos? Si quiere union, intersección, diferencia o diferencia simétrica.
-            Union, cantidad de sets: Ej:
-            [
-                {0, 1, 2, 3, 4, 5, 9},
-                {2, 3, 4, 8, 9},
-                {3, 4, 5, 6, 7, 8}
-            ]
-            setters = []
-            listasDni = []
-            for i in range(cantidad_integrantes):
-                dni = input(f"Ingrese el DNI del integrante {i + 1}: ")
-                conjunto_set = limpiar_y_convertir(dni)
-                conjunto_list = normalizar_lista(dni)
-                setters.append(conjunto_set)
-                listasDni.append(conjunto_list)
-            
-            menu, opciones = {
-                "1": "Unión de conjuntos",
-                "2": "Intersección de conjuntos",
-                "3": "Diferencia de conjuntos",
-                "4": "Diferencia simétrica de conjuntos",
-                "5": "Salir"
-            }
-            si selecciona 1:
-            
-            def union_varios(conjuntos):
-            unionConjuntos = set()
-            for i in range(len(conjuntos) - 1):
-                unionConjuntos = conjuntos[i].union(conjuntos[i + 1])
-            return print(f"Unión de conjuntos: {unionConjuntos}")
-
-            P.union(R).union(E)
-            P.intersection(R).intersection(E)
-            P.difference(R).difference(E)
-            P.symmetric_difference(R).symmetric_difference(E)
-            '''
+            dnis_list_of_lists = convertir_a_lista_de_listas(dnis_list)
+            dnis_list_of_sets = generar_digitos_unicos(dnis_list)
+            print(f"Conjunto de DNI (set): {dnis_list_of_sets}")
+            print(f"Lista de DNI (list): {dnis_list_of_lists}")
             ejecutar_submenu_conjuntos()
         
         elif opcion == "2":
