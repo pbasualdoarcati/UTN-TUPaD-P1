@@ -20,11 +20,7 @@ def sub_menu_conjuntos():
 
 
 def sub_menu_producto_cartesiano():
-    print("1. Producto cartesiano")
-    print("2. Producto cartesiano con repetición")
-    print("3. Volver")
-    print("4. Calcular grupo Z")
-    print("5. Calcular producto cartesiano")
+    print("1.Trabajar con años de nacimiento")
     opcion = input(SELECCIONE_OPCION_PROMPT)
     return opcion
 
