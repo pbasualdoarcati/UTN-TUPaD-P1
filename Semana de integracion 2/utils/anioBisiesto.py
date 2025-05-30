@@ -41,12 +41,10 @@ def anio_bisiesto(anios_list) -> None:
 
     # Mostrar si hay o no años especiales
     if anios_bisiestos:
-        print(f"\nTenemos un año especial. Años bisiestos: {', '.join(map(str, anios_bisiestos))}")
+        if len(anios_bisiestos) == 1:
+            print(f"\nTenemos un año especial. Año bisiesto: {anios_bisiestos[0]}")
+        else:
+            anios_bisiestos.sort()
+            print(f"\nTenemos varios años especiales. Años bisiestos: {', '.join(map(str, anios_bisiestos))}")
     else:
         print("\nNingún integrante nació en un año bisiesto.")
-
-    # Mostrar edades actuales
-    print("\n-- Edades actuales --\n")
-    for i, anio in enumerate(anios_nacimiento, start=1):
-        edad = obtener_edad(anio)
-        print(f"Integrante {i}: {edad} años")

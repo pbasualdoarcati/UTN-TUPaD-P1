@@ -5,6 +5,7 @@ from utils.operaciones import contar_frecuencia, sumar_digitos, digitos_comparti
 from utils.normalizador import convertir_a_lista_de_listas, generar_digitos_unicos, limpiar_y_convertir
 from utils.productoCartesiano import producto_cartesiano
 from utils.anioBisiesto import anio_bisiesto
+from utils.operacionesConAnios import pedir_anios, contar_pares_impares
 from utils.ingresarCantIntegrantes import ingresar_cantidad_integrantes
 from utils.ingresarDnis import ingresar_dnis
 
@@ -45,16 +46,14 @@ def ejecutar_submenu_conjuntos():
     while True:
         sub_option = sub_menu_conjuntos()
         if sub_option == "1":
-            mostrar_venn_con_elementos(P, R)
+            diferencia_entre_dos([P, R])
         elif sub_option == "2":
-            diferencia_entre_dos(P, R)
-        elif sub_option == "3":
             union_varios([P, R])
-        elif sub_option == "4":
+        elif sub_option == "3":
             interseccion_varios([P, R])
+        elif sub_option == "4":
+            diferencia_simetrica_y_diferencias([P, E])
         elif sub_option == "5":
-            diferencia_simetrica_y_diferencias(P, E)
-        elif sub_option == "6":
             break
         else:
             print(OPCION_NO_VALIDA)
@@ -65,13 +64,11 @@ def ejecutar_submenu_producto_cartesiano():
         sub_option = sub_menu_producto_cartesiano()
         if sub_option == "1":
             integrantes  = int(input("Ingrese la cantidad de integrantes: "))
-            # Lógica para producto cartesiano
-            pass
-        elif sub_option == "2":
-            anio_bisiesto(mock)
-        elif sub_option == "3":
+            anios = pedir_anios(integrantes)
+            pares, impares = contar_pares_impares(anios)
+            print(f"Números pares: {pares}, Números impares: {impares}")
+            anio_bisiesto(anios)
+            producto_cartesiano(anios)
             break
-        elif sub_option == "4":
-            producto_cartesiano(mock)
         else:
             print(OPCION_NO_VALIDA)
