@@ -1,3 +1,4 @@
+from datetime import datetime
 # Verificamos si todos los integrantes nacieron después del año 2000
 # Usamos la función all() que devuelve True solo si todos cumplen la condición
 def producto_cartesiano(list_years):
@@ -5,10 +6,10 @@ def producto_cartesiano(list_years):
 
     grupo_z(years_nacimiento)
     # Pedimos el año actual para poder calcular las edades
-    year_referencia = int(input("Ingresá un año de referencia para calcular las edades: "))
+    year_referencia = datetime.now().year
 
     # Calculamos las edades restando el año de nacimiento al año actual
-    edades = [year - year_referencia for year in years_nacimiento]  # edades = [year - years_nacimiento for year in years_nacimiento]
+    edades = [year_referencia- year for year in years_nacimiento]
 
         # Mostramos las edades calculadas
     print("\nEdades actuales de los integrantes:")
@@ -33,7 +34,6 @@ def producto_cartesiano(list_years):
         print(par)  # Mostramos cada combinación
 
 def grupo_z(list_year):
-    print(f"Entro: {list_year}")
     contador = 0
     limite = len(list_year)
     for year in list_year:  
