@@ -9,12 +9,11 @@ def menu ():
     return opcion
 
 def sub_menu_conjuntos():
-    print("1. Mostrar Venn con elementos")
-    print("2. Diferencia entre dos conjuntos")
-    print("3. Unión de dos conjuntos")
-    print("4. Intersección de dos conjuntos")
-    print("5. Diferencia simétrica de dos conjuntos")
-    print("6. Volver")
+    print("1. Diferencia entre dos conjuntos")
+    print("2. Unión de dos conjuntos")
+    print("3. Intersección de dos conjuntos")
+    print("4. Diferencia simétrica de dos conjuntos")
+    print("5. Volver")
     opcion = input(SELECCIONE_OPCION_PROMPT)
     return opcion
 

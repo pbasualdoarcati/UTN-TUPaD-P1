@@ -77,16 +77,14 @@ def ejecutar_submenu_conjuntos():
     while True:
         sub_option = sub_menu_conjuntos()
         if sub_option == "1":
-            mostrar_venn_con_elementos(P, R)
+            diferencia_entre_dos([P, R])
         elif sub_option == "2":
-            diferencia_entre_dos(P, R)
-        elif sub_option == "3":
             union_varios([P, R])
-        elif sub_option == "4":
+        elif sub_option == "3":
             interseccion_varios([P, R])
+        elif sub_option == "4":
+            diferencia_simetrica_y_diferencias([P, E])
         elif sub_option == "5":
-            diferencia_simetrica_y_diferencias(P, E)
-        elif sub_option == "6":
             break
         else:
             print(OPCION_NO_VALIDA)

@@ -1,35 +1,43 @@
 from matplotlib_venn import venn2, venn3
 import matplotlib.pyplot as plt
 
+MENSAJE_ERROR = "La función solo soporta 2 conjuntos para mostrar elementos."
+
 # Función para mostrar la diferencia entre dos conjuntos con un diagrama de Venn 
 
-def diferencia_entre_dos(conjunto1, conjunto2, etiqueta1='Conjunto A', etiqueta2='Conjunto B', titulo='Diferencia entre conjuntos'):
-    venn = venn2([conjunto1, conjunto2], set_labels=(etiqueta1, etiqueta2))
-    plt.title(titulo)
+def diferencia_entre_dos(conjuntos, etiquetas=None, titulo='Diferencia entre conjuntos'):
+    n = len(conjuntos)
+    if n == 2:
+        conjunto1, conjunto2 = conjuntos[0], conjuntos[1]
+        if etiquetas is None:
+            etiquetas = [f'Conjunto {i+1}' for i in range(n)]
 
-    diferencia_a_b = conjunto1 - conjunto2
-    diferencia_b_a = conjunto2 - conjunto1
-    interseccion = conjunto1 & conjunto2
+        venn = venn2([conjunto1, conjunto2], set_labels=(etiquetas[0], etiquetas[1]))
+        plt.title(titulo)
 
-    # Mostrar los elementos reales
-    if venn.get_label_by_id('10'):
-        venn.get_label_by_id('10').set_text('\n'.join(map(str, diferencia_a_b)))
-    if venn.get_label_by_id('01'):
-        venn.get_label_by_id('01').set_text(None)
-    if venn.get_label_by_id('11'):
-        venn.get_label_by_id('11').set_text(None)
+        diferencia_a_b = conjunto1.difference(conjunto2)
 
-    # Mostrar A - B como texto debajo del gráfico
-    plt.figtext(
-        0.5,
-        0.01,
-        f'{etiqueta1} - {etiqueta2} = {sorted(diferencia_a_b)}',
-        ha='center',
-        fontsize=10,
-        color='blue'
-    )
+        # Mostrar los elementos reales
+        if venn.get_label_by_id('10'):
+            venn.get_label_by_id('10').set_text('\n'.join(map(str, diferencia_a_b)))
+        if venn.get_label_by_id('01'):
+            venn.get_label_by_id('01').set_text(None)
+        if venn.get_label_by_id('11'):
+            venn.get_label_by_id('11').set_text(None)
 
-    plt.show()
+        # Mostrar A - B como texto debajo del gráfico
+        plt.figtext(
+            0.5,
+            0.01,
+            f'{etiquetas[0]} - {etiquetas[1]} = {sorted(diferencia_a_b)}',
+            ha='center',
+            fontsize=10,
+            color='blue'
+        )
+
+        plt.show()
+    else:
+        print(MENSAJE_ERROR)
 
     
 # Función para mostrar la unión de varios conjuntos
@@ -40,9 +48,9 @@ def union_varios(conjuntos, etiquetas=None, titulo='Unión de conjuntos'):
     n = len(conjuntos)
     if n == 2:
         conjunto1, conjunto2 = conjuntos[0], conjuntos[1]
-        etiqueta1, etiqueta2 = (etiquetas if etiquetas else ('Conjunto 1', 'Conjunto 2'))
-
-        venn = venn2([conjunto1, conjunto2], set_labels=(etiqueta1, etiqueta2))
+        if etiquetas is None:
+            etiquetas = [f'Conjunto {i+1}' for i in range(n)]
+        venn = venn2([conjunto1, conjunto2], set_labels=(etiquetas[0], etiquetas[1]))
 
         plt.title(titulo)
 
@@ -60,7 +68,7 @@ def union_varios(conjuntos, etiquetas=None, titulo='Unión de conjuntos'):
         plt.figtext(
             0.5,
             0.01,
-            f'{etiqueta1} ∪ {etiqueta2} = {sorted(union)}',
+            f'{etiquetas[0]} ∪ {etiquetas[1]} = {sorted(union)}',
             ha='center',
             fontsize=10,
             color='blue'
@@ -69,7 +77,7 @@ def union_varios(conjuntos, etiquetas=None, titulo='Unión de conjuntos'):
         plt.show()
 
     else:
-        print("La función union_varios solo soporta 2 conjuntos para mostrar elementos.")
+        print(MENSAJE_ERROR)
 
 
 # Función para mostrar la intersección de varios conjuntos
@@ -131,31 +139,41 @@ def interseccion_varios(conjuntos, etiquetas=None, titulo='Intersección de conj
         print("Sólo se soportan 2 o 3 conjuntos para el diagrama de Venn.")
 # Función para mostrar la diferencia simétrica y las diferencias entre dos conjuntos
 
-def diferencia_simetrica_y_diferencias(conjunto1, conjunto2, etiqueta1='Conjunto A', etiqueta2='Conjunto B', titulo='Diferencia simétrica'):
-    venn = venn2([conjunto1, conjunto2], set_labels=(etiqueta1, etiqueta2))
-    plt.title(titulo)
+def diferencia_simetrica_y_diferencias(conjuntos, etiquetas= None, titulo='Diferencia simétrica'):
+    n = len(conjuntos)
+    if n != 2:
+        print(MENSAJE_ERROR)
+        return
+    if n == 2:
+        conjunto1, conjunto2 = conjuntos[0], conjuntos[1]
+        if etiquetas is None:
+            etiquetas = [f'Conjunto {i+1}' for i in range(n)]
+        venn = venn2([conjunto1, conjunto2], set_labels=(etiquetas[0], etiquetas[1]))
+        plt.title(titulo)
 
-    # Diferencia A - B
-    if venn.get_label_by_id('10'):
-        venn.get_label_by_id('10').set_text('\n'.join(map(str, conjunto1 - conjunto2)))
+        # Diferencia A - B
+        if venn.get_label_by_id('10'):
+            venn.get_label_by_id('10').set_text('\n'.join(map(str, conjunto1.difference(conjunto2))))
 
-    # Diferencia B - A
-    if venn.get_label_by_id('01'):
-        venn.get_label_by_id('01').set_text('\n'.join(map(str, conjunto2 - conjunto1)))
+        # Diferencia B - A
+        if venn.get_label_by_id('01'):
+            venn.get_label_by_id('01').set_text('\n'.join(map(str, conjunto2.difference(conjunto1))))
 
-    # Intersección A ∩ B
-    if venn.get_label_by_id('11'):
-        venn.get_label_by_id('11').set_text(None)
+        # Intersección A ∩ B
+        if venn.get_label_by_id('11'):
+            venn.get_label_by_id('11').set_text(None)
 
-    # Diferencia simétrica A ∆ B
-    diferencia_simetrica = conjunto1.symmetric_difference(conjunto2)
-    plt.figtext(
-        0.5,
-        0.01,
-        f'{etiqueta1} ∆ {etiqueta2} = {sorted(diferencia_simetrica)}',
-        ha='center',
-        fontsize=10,
-        color='blue'
-    )
+        # Diferencia simétrica A ∆ B
+        diferencia_simetrica = conjunto1.symmetric_difference(conjunto2)
+        plt.figtext(
+            0.5,
+            0.01,
+            f'{etiquetas[0]} ∆ {etiquetas[1]} = {sorted(diferencia_simetrica)}',
+            ha='center',
+            fontsize=10,
+            color='blue'
+        )
 
-    plt.show()
+        plt.show()
+    else:
+        print(MENSAJE_ERROR)
