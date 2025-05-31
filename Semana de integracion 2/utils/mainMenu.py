@@ -1,6 +1,6 @@
 from utils.menu import menu, sub_menu_conjuntos, sub_menu_producto_cartesiano
 from utils.graficoVennDiferencia import mostrar_venn_con_elementos
-from utils.graficosVenn import diferencia_entre_dos, union_varios, interseccion_varios, diferencia_simetrica_y_diferencias
+from utils.graficosVenn import diferencia_entre_dos as graficar_diferencia, union_varios as graficar_union, interseccion_varios as graficar_interseccion, diferencia_simetrica_y_diferencias as graficar_diferencias_simetrica
 from utils.operaciones import contar_frecuencia, sumar_digitos, digitos_compartidos, diversidad_alta
 from utils.normalizador import convertir_a_lista_de_listas, generar_digitos_unicos, limpiar_y_convertir
 from utils.productoCartesiano import producto_cartesiano
@@ -8,6 +8,7 @@ from utils.anioBisiesto import anio_bisiesto
 from utils.operacionesConAnios import pedir_anios, contar_pares_impares
 from utils.ingresarCantIntegrantes import ingresar_cantidad_integrantes
 from utils.ingresarDnis import ingresar_dnis
+from utils.seleccionarConjuntos import seleccionar_conjuntos
 
 OPCION_NO_VALIDA = "Opción no válida. Intente nuevamente."
 
@@ -29,7 +30,7 @@ def main_loop():
             dnis_list_of_sets = generar_digitos_unicos(dnis_list)
             print(f"Conjunto de DNI (set): {dnis_list_of_sets}")
             print(f"Lista de DNI (list): {dnis_list_of_lists}")
-            ejecutar_submenu_conjuntos()
+            ejecutar_submenu_conjuntos(dnis_list_of_sets)
         
         elif opcion == "2":
             ejecutar_submenu_producto_cartesiano()
@@ -42,17 +43,31 @@ def main_loop():
             print(OPCION_NO_VALIDA)
 
 
-def ejecutar_submenu_conjuntos():
+def ejecutar_submenu_conjuntos(dnis): #dnis: array de sets de digitos unicos
+    print(f"Conjuntos de dígitos únicos generados: {dnis}")
     while True:
         sub_option = sub_menu_conjuntos()
         if sub_option == "1":
-            diferencia_entre_dos([P, R])
+            dos_conjuntos_seleccionados = seleccionar_conjuntos(dnis,2)
+            print(f"Conjuntos seleccionados: {dos_conjuntos_seleccionados}")
+            diferencia_entre_dos = set.difference(*dos_conjuntos_seleccionados)
+            print(f'Diferencia entre P y R: {diferencia_entre_dos}')
+            graficar_diferencia(dos_conjuntos_seleccionados)
         elif sub_option == "2":
-            union_varios([P, R])
+            tres_conjuntos_seleccionados = seleccionar_conjuntos(dnis,3)
+            union_total = set.union(*tres_conjuntos_seleccionados)
+            print(f'Union total de digitos unicos: {union_total}')
+            graficar_union(tres_conjuntos_seleccionados)
         elif sub_option == "3":
-            interseccion_varios([P, R])
+            tres_conjuntos_seleccionados = seleccionar_conjuntos(dnis,3)
+            interseccion_total = set.intersection(*tres_conjuntos_seleccionados)
+            print(f'Intersección total de dígitos únicos: {interseccion_total}')
+            graficar_interseccion(tres_conjuntos_seleccionados)
         elif sub_option == "4":
-            diferencia_simetrica_y_diferencias([P, E])
+            dos_conjuntos_seleccionados = seleccionar_conjuntos(dnis,2)
+            diferencia_simetrica_entre_dos = set.symmetric_difference(*dos_conjuntos_seleccionados)
+            print(f'Diferencia simétrica entre P y R: {diferencia_simetrica_entre_dos}')
+            graficar_diferencias_simetrica(dos_conjuntos_seleccionados)
         elif sub_option == "5":
             break
         else:
