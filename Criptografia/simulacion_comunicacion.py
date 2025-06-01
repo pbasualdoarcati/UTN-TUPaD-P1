@@ -16,7 +16,7 @@ class SimulacionComunicacion:
             }
         }
 
-    def enviar_mensaje(self, emisor, receptor, mensaje):
+    def enviar_mensaje(self, receptor, mensaje):
         clave_pub_receptor = self.claves[receptor]["publica"]
         return cifrar_mensaje(clave_pub_receptor, mensaje)
 

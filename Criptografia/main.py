@@ -36,17 +36,17 @@ def ejecutar_simulacion():
         
         if opcion == "1":
             mensaje = input("Escribí el mensaje para B: ")
-            cifrado = simulador.enviar_mensaje("A", "B", mensaje)
+            cifrado = simulador.enviar_mensaje("B", mensaje)
             print(f"\n📤 Mensaje cifrado: {cifrado}")
             descifrado = simulador.recibir_mensaje("B", cifrado)
-            print(f"📥 B recibió: {descifrado}")
+            print(f"📥 B decodificado: {descifrado}")
         
         elif opcion == "2":
             mensaje = input("Escribí el mensaje para A: ")
-            cifrado = simulador.enviar_mensaje("B", "A", mensaje)
+            cifrado = simulador.enviar_mensaje("A", mensaje)
             print(f"\n📤 Mensaje cifrado: {cifrado}")
             descifrado = simulador.recibir_mensaje("A", cifrado)
-            print(f"📥 A recibió: {descifrado}")
+            print(f"📥 A decodificado: {descifrado}")
 
         elif opcion == "3":
             print("Saliendo...")
