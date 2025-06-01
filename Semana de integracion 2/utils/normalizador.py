@@ -1,22 +1,3 @@
-import re
-def limpiar_y_convertir(cadena):
-    # Reemplazamos . y - por comas para unificar
-    regex = r"[a-zA-Z]+"
-
-    cadena = cadena.replace('.', ',').replace('-', ',')
-    cadena = re.sub(regex, ',',cadena)
-    # Dividimos por comas y convertimos a enteros
-    return {int(num) for num in cadena.split(',') if num.strip().isdigit()}
-
-def normalizar_lista(cadena):
-    # Reemplazamos . y - por comas para unificar
-    regex = r"[a-zA-Z]+"
-
-    cadena = cadena.replace('.', ',').replace('-', ',')
-    cadena = re.sub(regex, ',',cadena)
-    # Dividimos por comas y convertimos a enteros
-    return [int(num) for num in cadena.split(',') if num.strip().isdigit()]
-
 def convertir_a_lista_de_listas(dnis_list):
     dnis_list_normalizados = []
     for dni in dnis_list:
@@ -24,7 +5,7 @@ def convertir_a_lista_de_listas(dnis_list):
         digitos = [int(digito) for digito in str(dni)]
         dnis_list_normalizados.append(digitos)
     return dnis_list_normalizados
-
+## Salida [[3, 5, 4, 5, 9, 8, 3, 1], [3, 5, 2, 2, 1, 4, 9, 0], [1, 2, 3, 4, 6, 5, 4, 7]]
 def generar_digitos_unicos(dnis: list):
     dnis_digitos_unicos = []
     for dni in dnis:
