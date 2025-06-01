@@ -1,4 +1,5 @@
 # main.py
+#libreria https://cryptography.io/
 from simulacion_comunicacion import SimulacionComunicacion
 from pathlib import Path
 from generar_claves import generar_y_guardar_claves
@@ -37,14 +38,14 @@ def ejecutar_simulacion():
         if opcion == "1":
             mensaje = input("Escribí el mensaje para B: ")
             cifrado = simulador.enviar_mensaje("B", mensaje)
-            print(f"\n📤 Mensaje cifrado: {cifrado}")
+            print(f"\n📤 Mensaje interceptado, resultado de la intercepción: {cifrado}")
             descifrado = simulador.recibir_mensaje("B", cifrado)
             print(f"📥 B decodificado: {descifrado}")
         
         elif opcion == "2":
             mensaje = input("Escribí el mensaje para A: ")
             cifrado = simulador.enviar_mensaje("A", mensaje)
-            print(f"\n📤 Mensaje cifrado: {cifrado}")
+            print(f"\n📤 Mensaje interceptado, resultado de la intercepción: {cifrado}")
             descifrado = simulador.recibir_mensaje("A", cifrado)
             print(f"📥 A decodificado: {descifrado}")
 
