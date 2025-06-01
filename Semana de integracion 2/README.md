@@ -47,7 +47,6 @@ Además, aplicamos conceptos de **Arquitectura de Sistemas Operativos**, automat
 **Ejemplos de condiciones lógicas implementadas:**
 
 - Si un dígito aparece en todos los conjuntos: `Dígito compartido`.
-- Si algún conjunto tiene más de 6 elementos: `Diversidad numérica alta`.
 
 ---
 
