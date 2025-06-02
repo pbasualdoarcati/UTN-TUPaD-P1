@@ -9,7 +9,7 @@ def producto_cartesiano(list_years):
     year_referencia = datetime.now().year
 
     # Calculamos las edades restando el año de nacimiento al año actual
-    edades = [year_referencia- year for year in years_nacimiento]
+    edades = [year_referencia - year for year in years_nacimiento]
 
         # Mostramos las edades calculadas
     print("\nEdades actuales de los integrantes:")
