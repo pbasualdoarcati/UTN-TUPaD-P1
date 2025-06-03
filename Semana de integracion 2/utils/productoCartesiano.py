@@ -40,4 +40,6 @@ def grupo_z(list_year):
         if year > 2000:
             contador += 1 
     if contador == limite:
-        return print("Grupo Z")
+        return print("Todos los integrantes pertenecen al Grupo Z")
+    else :
+        return print("No todos los integrantes pertenecen al Grupo Z")

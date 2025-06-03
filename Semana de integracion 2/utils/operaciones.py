@@ -24,7 +24,9 @@ def obtener_digitos_compartidos(conjuntos):
     if not conjuntos:
         return set()
     interseccion = conjuntos[0]
+    for i, conjunto in enumerate(conjuntos):
+        print(f'Conjunto {i +1}: {conjunto}')
+
     for conjunto in conjuntos[1:]:
         interseccion = interseccion.intersection(conjunto)
-        print(f'Conjunto: {conjunto}') 
     return interseccion
